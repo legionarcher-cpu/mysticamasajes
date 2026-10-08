@@ -1,0 +1,134 @@
+/* ==================================================
+   CITAS (sala de masajes): calendario, ficha, Inicio, Reporte y Configuración
+   Prefijo "cit-". Lo usan js/citas-comun.js, js/secciones/citas.js,
+   js/secciones/mclientes.js y js/secciones/configuracion/servicios.js
+   ================================================== */
+
+/* ---------- Ventanas ---------- */
+.cit-ventana { width: min(40rem, calc(100vw - 2rem)); }
+.cit-ventana-ancha { width: min(56rem, calc(100vw - 2rem)); }
+.cit-ventana-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+/* Un solo scroll (el de la ventana, .dialogo). Los bloques NO se encogen: si no, al no
+   caber se aplastaban y quedaban encimados (guía, tablas, formulario y sus botones). */
+.cit-ventana-cuerpo { display: flex; flex-direction: column; gap: 0.889rem; min-width: 0; }
+.cit-ventana-cuerpo > * { flex-shrink: 0; min-width: 0; }
+.cit-ventana .dialogo-botones { flex-wrap: wrap; }
+.cit-ventana-cabecera .dialogo-titulo { margin-bottom: 0.667rem; overflow-wrap: anywhere; }
+/* Cuadros de texto de varias líneas (.campo-input les pone el alto de un campo de una línea) */
+.cit-ventana textarea.campo-input, .cit-cfg textarea.campo-input {
+    height: auto; min-height: 4.5rem; padding: 0.5rem 0.667rem; line-height: 1.4; resize: vertical;
+}
+.cit-ventana .campo, .cit-cfg .campo { min-width: 0; }
+.cit-en-linea { display: flex; gap: 0.5rem; align-items: center; }
+.cit-en-linea .campo-input { flex: 1; min-width: 0; }
+
+/* ---------- Textos y alertas ---------- */
+.cit-gris { color: var(--color-gris); font-size: 0.85rem; }
+.cit-vacio { color: var(--color-gris); font-style: italic; padding: 0.5rem 0; }
+.cit-nota { color: var(--color-gris); font-size: 0.85rem; }
+.cit-subtitulo { margin: 0 0 0.667rem; font-size: 1.05rem; color: var(--color-texto); display: flex; align-items: center; gap: 0.4rem; }
+.cit-alerta { margin: 0; padding: 0.556rem 0.778rem; border-radius: var(--radio); font-size: 0.9rem; border-left: 4px solid; }
+.cit-alerta-contraindicado { background: var(--color-rojo-claro); border-color: var(--color-rojo); color: var(--color-rojo-oscuro); }
+.cit-alerta-precaucion { background: #FFF4E5; border-color: #D97706; color: #8A4B05; }
+.cit-riesgo-contraindicado { color: var(--color-rojo); }
+.cit-riesgo-precaucion { color: #D97706; }
+.cit-salud { display: flex; flex-direction: column; gap: 0.444rem; align-items: flex-start; }
+.cit-confirmar { display: flex; gap: 0.5rem; align-items: center; font-weight: 600; color: var(--color-rojo-oscuro); }
+.cit-sugerencia { display: flex; flex-direction: column; gap: 0.333rem; }
+.cit-wa { background: #25D366; color: #fff; border-color: #25D366; }
+.cit-wa:hover:not(:disabled) { background: #1DA851; }
+.cit-wa:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Ficha ---------- */
+.cit-ficha-datos { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; color: var(--color-texto); }
+.cit-agregar { border: 1px solid var(--color-borde); border-radius: var(--radio-grande); padding: 0.667rem 0.889rem; background: var(--color-fondo); }
+.cit-agregar > summary, .cit-guia > summary { cursor: pointer; font-weight: 600; color: var(--color-azul); }
+.cit-agregar[open] > summary { margin-bottom: 0.667rem; }
+.cit-atajos { display: flex; flex-wrap: wrap; gap: 0.333rem; }
+.cit-atajo { border: 1px solid var(--color-borde); background: var(--color-blanco); border-radius: 999px; padding: 0.2rem 0.667rem; font-size: 0.78rem; cursor: pointer; }
+.cit-atajo-contraindicado { border-color: var(--color-rojo); color: var(--color-rojo-oscuro); }
+.cit-atajo-precaucion { border-color: #D97706; color: #8A4B05; }
+.cit-historial { display: flex; flex-direction: column; gap: 0.444rem; }
+.cit-historial-item { display: flex; gap: 0.667rem; align-items: flex-start; padding: 0.556rem 0.667rem; border: 1px solid var(--color-borde-suave); border-radius: var(--radio); }
+.cit-historial-icono { font-size: 1.2rem; color: var(--color-azul); }
+.cit-historial-texto { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; overflow-wrap: anywhere; }
+.cit-superado { opacity: 0.6; }
+/* Guía de contraindicaciones: recuadro propio, se lee en orden debajo del resto */
+.cit-guia { border: 1px solid var(--color-borde); border-radius: var(--radio-grande); padding: 0.667rem 0.889rem; background: var(--color-blanco); }
+.cit-guia[open] > summary { margin-bottom: 0.5rem; }
+.cit-guia ul { margin: 0.333rem 0 0.889rem 1.2rem; padding: 0; font-size: 0.88rem; line-height: 1.45; }
+.cit-guia li { margin-bottom: 0.25rem; }
+.cit-guia p { margin: 0.5rem 0 0; }
+.cit-guia a { color: var(--color-azul); }
+
+/* ---------- Calendario ---------- */
+.cit-barra { display: flex; flex-wrap: wrap; gap: 0.667rem; align-items: center; justify-content: space-between; margin-bottom: 0.889rem; }
+.cit-navegar { display: flex; gap: 0.333rem; align-items: center; }
+.cit-titulo { margin-left: 0.5rem; font-size: 1.1rem; text-transform: capitalize; }
+.cit-vistas { display: inline-flex; border: 1px solid var(--color-borde); border-radius: var(--radio); overflow: hidden; }
+.cit-vista { border: 0; background: var(--color-blanco); padding: 0.4rem 0.889rem; cursor: pointer; font: inherit; }
+.cit-vista.activa { background: var(--color-azul); color: #fff; }
+.cit-grilla { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: var(--color-borde); border: 1px solid var(--color-borde); border-radius: var(--radio-grande); overflow: hidden; }
+.cit-grilla-cabeza { background: var(--color-azul-claro); text-align: center; font-weight: 600; font-size: 0.85rem; padding: 0.4rem; }
+.cit-dia { background: var(--color-blanco); min-height: 6.5rem; padding: 0.333rem; display: flex; flex-direction: column; gap: 0.2rem; cursor: pointer; min-width: 0; }
+.cit-grilla-semana .cit-dia { min-height: 22rem; }
+.cit-dia:hover { background: var(--color-fondo); }
+.cit-dia-cabeza { display: flex; justify-content: space-between; align-items: baseline; gap: 0.25rem; font-size: 0.85rem; }
+.cit-dia-cabeza small { color: var(--color-gris); font-size: 0.7rem; }
+.cit-hoy .cit-dia-cabeza strong { background: var(--color-naranja); color: #fff; border-radius: 999px; padding: 0 0.45rem; }
+.cit-cerrado { background: repeating-linear-gradient(135deg, var(--color-fondo), var(--color-fondo) 6px, var(--color-borde-suave) 6px, var(--color-borde-suave) 12px); }
+.cit-fuera { opacity: 0.45; }
+.cit-mas { color: var(--color-gris); }
+.cit-chip { display: block; width: 100%; text-align: left; border: 0; border-left: 3px solid var(--color-azul); background: var(--color-azul-claro); border-radius: 4px; padding: 0.15rem 0.35rem; font: inherit; font-size: 0.78rem; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cit-chip-solicitada { border-left-color: #6D28D9; background: #F3EEFF; }
+.cit-chip-confirmada { border-left-color: #0E6B63; background: #E0F2F1; }
+.cit-chip-atendida { border-left-color: var(--color-verde); background: var(--color-verde-claro); }
+.cit-chip-no_asistio { border-left-color: #D97706; background: #FFF4E5; }
+.cit-chip-cancelada { border-left-color: var(--color-gris); background: var(--color-borde-suave); text-decoration: line-through; color: var(--color-gris); }
+.cit-agenda { background: var(--color-blanco); border: 1px solid var(--color-borde); border-radius: var(--radio-grande); padding: 0.667rem 0.889rem; }
+.cit-agenda-fila { display: grid; grid-template-columns: 3.5rem 1fr auto auto; gap: 0.667rem; align-items: center; padding: 0.4rem 0; border-top: 1px solid var(--color-borde-suave); }
+.cit-agenda-citas { display: flex; flex-wrap: wrap; gap: 0.333rem; min-width: 0; }
+.cit-agenda-citas .cit-chip { width: auto; max-width: 100%; }
+
+/* ---------- Inicio y listas ---------- */
+.cit-inicio .resumen { margin-bottom: 1rem; }
+.cit-inicio-columnas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); gap: 1rem; }
+.cit-lista { display: flex; flex-direction: column; }
+.cit-fila { display: flex; gap: 0.667rem; align-items: center; padding: 0.5rem 0; border-top: 1px solid var(--color-borde-suave); flex-wrap: wrap; }
+.cit-fila-hora { font-family: var(--fuente-codigo); font-weight: 700; min-width: 3.5rem; color: var(--color-azul); }
+.cit-fila-texto { flex: 1; display: flex; flex-direction: column; min-width: 8rem; }
+.cit-fila-texto small { color: var(--color-gris); }
+
+/* ---------- Reporte y Configuración ---------- */
+.cit-rep-tablas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr)); gap: 1rem; margin-top: 1rem; }
+.cit-cfg { display: flex; flex-direction: column; gap: 1rem; }
+.cit-cfg-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 0.667rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cit-horario-dia { display: grid; grid-template-columns: 6rem 1fr auto; gap: 0.667rem; align-items: center; padding: 0.5rem 0; border-top: 1px solid var(--color-borde-suave); }
+.cit-horario-bloques { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.cit-bloque { display: inline-flex; align-items: center; gap: 0.2rem; background: var(--color-azul-claro); border-radius: var(--radio); padding: 0.15rem 0.5rem; font-size: 0.85rem; }
+.cit-mensaje { margin-bottom: 1rem; }
+.cit-vista-previa { background: #DCF8C6; border-radius: var(--radio-grande); padding: 0.667rem 0.889rem; white-space: pre-wrap; font-size: 0.9rem; }
+
+/* ---------- Celular ---------- */
+@media (max-width: 760px) {
+    .cit-ventana, .cit-ventana-ancha { width: calc(100vw - 1rem); max-height: calc(100vh - 1rem); }
+    .cit-ventana .dialogo-form { padding: 1rem; }
+    .cit-ventana .dialogo-botones > * { flex: 1 1 auto; justify-content: center; }
+    .cit-en-linea { flex-wrap: wrap; }
+    .cit-en-linea .campo-input { flex-basis: 100%; }
+    .cit-historial-item { flex-wrap: wrap; }
+    .cit-historial-item > .boton { margin-left: auto; }
+    .cit-ficha-datos { flex-direction: column; align-items: flex-start; gap: 0.333rem; }
+    .cit-barra { flex-direction: column; align-items: stretch; }
+    .cit-navegar { flex-wrap: wrap; }
+    .cit-vistas { align-self: flex-start; }
+    .cit-titulo { flex-basis: 100%; margin: 0.333rem 0 0; }
+    .cit-fila { align-items: flex-start; }
+    .cit-cfg-cabeza > .campo-input { width: 100%; }
+    .cit-grilla-semana { grid-template-columns: 1fr; }
+    .cit-grilla-semana .cit-grilla-cabeza { display: none; }
+    .cit-grilla-semana .cit-dia { min-height: 0; }
+    .cit-dia { min-height: 4.5rem; }
+    .cit-grilla-mes .cit-chip { font-size: 0; padding: 0.25rem; }
+    .cit-agenda-fila, .cit-horario-dia { grid-template-columns: 3.5rem 1fr; }
+}
