@@ -1,0 +1,35 @@
+<!-- ==================================================
+     SECCIÓN: CITAS (sala de masajes) — calendario Mes / Semana / Día
+     Lógica: js/secciones/citas.js · Estilos: css/citas-comun.css
+     Tablas: myst_citas, myst_clientes, myst_servicios, myst_horarios (sql/02_mystica_masajes.sql)
+     ================================================== -->
+<script>if (!document.querySelector('.cuerpo-principal')) location.replace('../index.html');</script>
+
+<div class="pagina cit-pagina">
+    <div class="pagina-cabecera">
+        <div>
+            <h2 class="pagina-titulo">Citas</h2>
+            <p id="citSubtitulo" class="pagina-subtitulo">Cargando...</p>
+        </div>
+        <div class="pagina-acciones">
+            <button type="button" id="citNueva" class="boton boton-principal"><i class="bi bi-plus-circle"></i> Nueva cita</button>
+        </div>
+    </div>
+
+    <div class="cit-barra">
+        <div class="cit-navegar">
+            <button type="button" class="boton boton-secundario boton-chico" data-mover="-1" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+            <button type="button" class="boton boton-secundario boton-chico" data-mover="0">Hoy</button>
+            <button type="button" class="boton boton-secundario boton-chico" data-mover="1" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
+            <strong id="citTitulo" class="cit-titulo"></strong>
+        </div>
+        <div class="cit-vistas" role="tablist">
+            <button type="button" class="cit-vista" data-vista="mes">Mes</button>
+            <button type="button" class="cit-vista" data-vista="semana">Semana</button>
+            <button type="button" class="cit-vista" data-vista="dia">Día</button>
+        </div>
+        <select id="citSucursal" class="campo-input filtro" aria-label="Sucursal"></select>
+    </div>
+
+    <div id="citCalendario" class="cit-calendario"></div>
+</div>

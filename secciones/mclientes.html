@@ -1,0 +1,50 @@
+<!-- ==================================================
+     SECCIÓN: CLIENTES (sala de masajes) — tabla myst_clientes
+     Ficha con historial de salud, edad, cumpleaños y WhatsApp.
+     Lógica: js/secciones/mclientes.js · Estilos: css/citas-comun.css
+     ================================================== -->
+<script>if (!document.querySelector('.cuerpo-principal')) location.replace('../index.html');</script>
+
+<div class="pagina">
+    <div class="pagina-cabecera">
+        <div>
+            <h2 class="pagina-titulo">Clientes</h2>
+            <p id="mclContador" class="pagina-subtitulo">Cargando...</p>
+        </div>
+        <div class="pagina-acciones">
+            <button type="button" id="mclNuevo" class="boton boton-principal"><i class="bi bi-person-plus"></i> Nuevo cliente</button>
+        </div>
+    </div>
+
+    <div class="filtros">
+        <div class="buscador">
+            <i class="bi bi-search"></i>
+            <input id="mclBuscar" type="search" class="buscador-input" placeholder="Buscar por nombre, teléfono o correo" autocomplete="off">
+        </div>
+        <select id="mclFiltro" class="campo-input filtro" aria-label="Filtro">
+            <option value="">Todos</option>
+            <option value="riesgo">Con alertas de salud</option>
+            <option value="cumple">Cumplen años este mes</option>
+            <option value="solicitudes">Solicitudes de usuario</option>
+            <option value="inactivos">Inactivos</option>
+        </select>
+    </div>
+
+    <div class="tabla-caja">
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Teléfono</th>
+                    <th>Edad</th>
+                    <th>Cumpleaños</th>
+                    <th>Sucursal</th>
+                    <th>Salud</th>
+                    <th>Acceso</th>
+                    <th class="tabla-col-acciones">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="mclCuerpo"></tbody>
+        </table>
+    </div>
+</div>
