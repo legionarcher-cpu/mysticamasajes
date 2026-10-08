@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ==================================================
+         PÁGINA WEB DE PRESENTACIÓN · MYSTICA (terapia alternativa y masajes)
+         Está aparte de la app (app.html). Todo lo suyo vive en la carpeta web/:
+           web/css/web.css      -> colores, estilos e IMÁGENES (se cambian ahí)
+           web/js/web.js        -> imágenes que se turnan, ventanas internas, visor y reservas
+           web/paginas/*.html   -> Servicios, terapias, Nosotros y Contacto (se abren en ventana)
+         Imágenes: img/banner-masa.jpg, img/banner-masa2.jpg y el logo img/logo.jpg
+         ================================================== -->
+    <title>Mystica · Terapia alternativa y masajes</title>
+    <meta name="description" content="Mystica: masajes relajantes, descontracturantes, deportivos, piedras calientes y drenaje linfático. Reserva tu cita por WhatsApp o en línea.">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="web/css/web.css?v=7">
+    <script src="web/js/web.js?v=4" defer></script>
+</head>
+<body>
+
+    <!-- ==================== CABECERA ==================== -->
+    <header class="sitio-cabecera">
+        <div class="contenedor">
+            <a href="#bienvenida" class="sitio-logo" aria-label="Mystica, inicio">
+                <img src="img/logo.jpg" alt="Logo de Mystica · Terapia alternativa y masajes">
+                <span class="sitio-logo-texto"><strong>Mystica</strong><small>Terapia alternativa y masajes</small></span>
+            </a>
+            <button type="button" class="sitio-menu-boton" id="menuBoton" aria-label="Abrir menú" aria-expanded="false">
+                <i class="bi bi-list"></i>
+            </button>
+            <nav class="sitio-menu" id="menu" aria-label="Menú principal">
+                <a href="#bienvenida">Inicio</a>
+                <a href="#soluciones">Terapias</a>
+                <button type="button" data-ventana="productos">Servicios</button>
+                <button type="button" data-ventana="vision">Nosotros</button>
+                <button type="button" data-ventana="contacto">Contacto</button>
+                <button type="button" class="boton boton-naranja" data-ventana="app">
+                    <i class="bi bi-calendar-heart"></i> Reservar en línea
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================== BIENVENIDA ==================== -->
+        <section class="portada" id="bienvenida">
+            <!-- Imágenes que se turnan (se cambian en web/css/web.css: --img-portada-1 y 2) -->
+            <div class="portada-imagen p1 activa"></div>
+            <div class="portada-imagen p2"></div>
+
+            <div class="contenedor">
+                <div class="portada-contenido">
+                    <span class="portada-etiqueta">Terapia alternativa y masajes</span>
+                    <h1>Relájate, libera tensiones y <span>vuelve a sentirte bien</span></h1>
+                    <p>Masajes relajantes, descontracturantes y terapéuticos con atención personalizada, en un espacio pensado para tu descanso.</p>
+                    <ul class="portada-claves">
+                        <li><i class="bi bi-check-circle-fill"></i> Atención personalizada</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Tu salud revisada en cada sesión</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Recordatorio de tu cita por WhatsApp</li>
+                    </ul>
+                    <div class="portada-acciones">
+                        <button type="button" class="boton boton-naranja" data-ventana="contacto">
+                            <i class="bi bi-whatsapp"></i> Reservar mi cita
+                        </button>
+                        <a href="#soluciones" class="boton boton-claro"><i class="bi bi-flower1"></i> Ver terapias</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portada-puntos" id="portadaPuntos" aria-label="Cambiar imagen"></div>
+        </section>
+
+        <!-- ==================== TERAPIAS (una página por tipo de terapia) ==================== -->
+        <section class="seccion" id="soluciones">
+            <div class="contenedor">
+                <div class="seccion-titulo">
+                    <span class="antetitulo">Terapias</span>
+                    <h2>¿Qué necesita tu cuerpo hoy?</h2>
+                    <p>Elige lo que buscas y descubre cómo es tu sesión, sus beneficios y para quién es ideal.</p>
+                </div>
+                <div class="soluciones">
+                    <button type="button" class="solucion" data-ventana="relajante">
+                        <span class="solucion-icono"><i class="bi bi-flower1"></i></span>
+                        <strong class="solucion-titulo">Relajación y bienestar</strong>
+                        <span class="solucion-texto">Para soltar el estrés del día, dormir mejor y reconectar contigo.</span>
+                        <span class="solucion-dirigido">
+                            <small>Ideal para</small>
+                            <span>Estrés</span><span>Ansiedad</span><span>Mal descanso</span>
+                        </span>
+                        <span class="solucion-ir">Ver terapia <i class="bi bi-arrow-right"></i></span>
+                    </button>
+                    <button type="button" class="solucion" data-ventana="descontracturante">
+                        <span class="solucion-icono"><i class="bi bi-activity"></i></span>
+                        <strong class="solucion-titulo">Descontracturante y terapéutico</strong>
+                        <span class="solucion-texto">Trabajo profundo en contracturas de espalda, cuello y hombros.</span>
+                        <span class="solucion-dirigido">
+                            <small>Ideal para</small>
+                            <span>Dolor de espalda</span><span>Tensión de cuello</span><span>Trabajo de oficina</span>
+                        </span>
+                        <span class="solucion-ir">Ver terapia <i class="bi bi-arrow-right"></i></span>
+                    </button>
+                    <button type="button" class="solucion" data-ventana="especiales">
+                        <span class="solucion-icono"><i class="bi bi-droplet-half"></i></span>
+                        <strong class="solucion-titulo">Deportivo y terapias especiales</strong>
+                        <span class="solucion-texto">Recuperación muscular, piedras calientes y drenaje linfático.</span>
+                        <span class="solucion-dirigido">
+                            <small>Ideal para</small>
+                            <span>Deportistas</span><span>Retención de líquidos</span><span>Regalo especial</span>
+                        </span>
+                        <span class="solucion-ir">Ver terapia <i class="bi bi-arrow-right"></i></span>
+                    </button>
+                </div>
+
+                <!-- Conozca más: abre cada ventana como una galería -->
+                <div class="galeria-sitio">
+                    <button type="button" class="foto" data-ventana="productos">
+                        <span class="foto-imagen"></span>
+                        <span class="foto-texto"><strong>Servicios</strong><span>Cada masaje, explicado</span></span>
+                    </button>
+                    <button type="button" class="foto" data-ventana="vision">
+                        <span class="foto-imagen"></span>
+                        <span class="foto-texto"><strong>Nosotros</strong><span>Quiénes somos</span></span>
+                    </button>
+                    <button type="button" class="foto" data-ventana="app">
+                        <span class="foto-imagen"></span>
+                        <span class="foto-texto"><strong>Reservar en línea</strong><span>Tu cuenta y tus citas</span></span>
+                    </button>
+                    <button type="button" class="foto" data-ventana="contacto">
+                        <span class="foto-imagen"></span>
+                        <span class="foto-texto"><strong>Contacto</strong><span>Reserva por WhatsApp</span></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== PIE ==================== -->
+    <footer class="sitio-pie">
+        <div class="contenedor">
+            <div>
+                <img src="img/logo.jpg" alt="Mystica">
+                <p>Mystica · Terapia alternativa y masajes. Un espacio para tu descanso, tu recuperación y tu bienestar.</p>
+            </div>
+            <div>
+                <h4>Navegación</h4>
+                <ul>
+                    <li><button type="button" data-ventana="relajante">Relajación y bienestar</button></li>
+                    <li><button type="button" data-ventana="descontracturante">Descontracturante y terapéutico</button></li>
+                    <li><button type="button" data-ventana="especiales">Deportivo y terapias especiales</button></li>
+                    <li><button type="button" data-ventana="productos">Servicios</button></li>
+                    <li><button type="button" data-ventana="vision">Nosotros</button></li>
+                    <li><button type="button" data-ventana="contacto">Contacto</button></li>
+                    <li><button type="button" data-ventana="app">Reservar en línea</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="tel:+50683491107"><i class="bi bi-telephone"></i> +506 8349 1107</a></li>
+                    <li><a href="tel:+50687445368"><i class="bi bi-telephone"></i> +506 8744 5368</a></li>
+                    <li><button type="button" data-whatsapp><i class="bi bi-whatsapp"></i> WhatsApp</button></li>
+                </ul>
+            </div>
+            <p class="pie-derechos">© <span id="anio">2026</span> Mystica · Terapia alternativa y masajes. © Todos los derechos reservados Acachete Logistics.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== VENTANA INTERNA ====================
+         Servicios, terapias, Nosotros y Contacto (web/paginas/) y la App (app.html) se
+         abren aquí, creciendo desde lo que se tocó (web/js/web.js). -->
+    <div class="ventana" id="ventana" role="dialog" aria-modal="true" aria-labelledby="ventanaTitulo" hidden>
+        <div class="ventana-fondo" data-cerrar></div>
+        <div class="ventana-panel" id="ventanaPanel">
+            <div class="ventana-barra">
+                <h2 id="ventanaTitulo"></h2>
+                <a id="ventanaPestana" href="app.html" target="_blank" rel="noopener" hidden>
+                    <i class="bi bi-box-arrow-up-right"></i> <span class="texto-boton">Abrir en pestaña nueva</span>
+                </a>
+                <button type="button" class="ventana-cerrar" data-cerrar aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="ventana-cuerpo" id="ventanaCuerpo"></div>
+        </div>
+    </div>
+
+    <!-- ==================== VISOR DE SERVICIOS (galería) ==================== -->
+    <div class="visor" id="visor" role="dialog" aria-modal="true" aria-labelledby="visorTitulo" hidden>
+        <div class="visor-fondo" data-cerrar-visor></div>
+        <button type="button" class="visor-cerrar" data-cerrar-visor aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="visor-flecha anterior" id="visorAnterior" aria-label="Servicio anterior"><i class="bi bi-chevron-left"></i></button>
+        <div class="visor-marco">
+            <div class="visor-cabecera">
+                <span class="producto-icono" id="visorIcono"></span>
+                <div>
+                    <h3 id="visorTitulo"></h3>
+                    <p id="visorFrase"></p>
+                </div>
+                <span class="visor-contador" id="visorContador"></span>
+            </div>
+            <div class="visor-contenido" id="visorContenido"></div>
+            <div class="visor-pie" id="visorMiniaturas" aria-label="Servicios"></div>
+        </div>
+        <button type="button" class="visor-flecha siguiente" id="visorSiguiente" aria-label="Servicio siguiente"><i class="bi bi-chevron-right"></i></button>
+    </div>
+</body>
+</html>

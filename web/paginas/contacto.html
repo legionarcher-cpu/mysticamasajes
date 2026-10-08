@@ -1,0 +1,88 @@
+<!-- ==================================================
+     CONTACTO · RESERVA TU CITA (se abre en la ventana interna de index.html)
+     El formulario no necesita servidor: arma la solicitud y la abre en WhatsApp
+     (en el celular, directo en la app: web/js/web.js -> prepararContacto / abrirWhatsApp).
+     Teléfonos: aquí, en el pie de index.html y en WEB_WHATSAPP de web/js/web.js.
+     Imagen del encabezado: --img-contacto-banner en web/css/web.css
+     ================================================== -->
+<div class="pagina-interna">
+    <div class="banner-interno banner-contacto">
+        <h1>Reserva tu momento de descanso</h1>
+        <p>Cuéntanos qué necesitas y te confirmamos tu cita por WhatsApp. También puedes reservar en línea con tu usuario.</p>
+    </div>
+
+    <div class="contacto-datos">
+        <a class="dato" href="tel:+50683491107">
+            <i class="bi bi-telephone"></i>
+            <span><small>Teléfono</small><strong>+506 8349 1107</strong></span>
+        </a>
+        <a class="dato" href="tel:+50687445368">
+            <i class="bi bi-telephone"></i>
+            <span><small>Teléfono</small><strong>+506 8744 5368</strong></span>
+        </a>
+        <a class="dato whatsapp" href="https://wa.me/50683491107" data-whatsapp>
+            <i class="bi bi-whatsapp"></i>
+            <span><small>WhatsApp</small><strong>Escríbenos ahora</strong></span>
+        </a>
+    </div>
+
+    <div class="contacto-columnas">
+        <form class="formulario" id="webContacto" novalidate>
+            <h2>Solicita tu cita</h2>
+            <div class="campos-web">
+                <div class="campo-web">
+                    <label for="webNombre">Nombre *</label>
+                    <input id="webNombre" autocomplete="name" maxlength="80">
+                </div>
+                <div class="campo-web">
+                    <label for="webTelefono">Teléfono (WhatsApp) *</label>
+                    <input id="webTelefono" type="tel" autocomplete="tel" maxlength="20">
+                </div>
+                <div class="campo-web ancho">
+                    <label for="webServicio">Servicio</label>
+                    <select id="webServicio">
+                        <option value="">Aún no sé, quiero que me recomienden</option>
+                        <option>Masaje relajante</option>
+                        <option>Masaje descontracturante</option>
+                        <option>Masaje deportivo</option>
+                        <option>Piedras calientes</option>
+                        <option>Drenaje linfático</option>
+                    </select>
+                </div>
+                <div class="campo-web">
+                    <label for="webFecha">Día preferido</label>
+                    <input id="webFecha" type="date">
+                </div>
+                <div class="campo-web">
+                    <label for="webHorario">Horario preferido</label>
+                    <select id="webHorario">
+                        <option value="">Cualquier hora</option>
+                        <option>Mañana</option>
+                        <option>Mediodía</option>
+                        <option>Tarde</option>
+                    </select>
+                </div>
+                <div class="campo-web ancho">
+                    <label for="webMensaje">¿Alguna molestia, lesión o condición de salud que debamos saber?</label>
+                    <textarea id="webMensaje" rows="4" maxlength="800" placeholder="Ej.: dolor en la espalda baja, embarazo, tomo anticoagulantes..."></textarea>
+                </div>
+            </div>
+            <p class="formulario-error" id="webContactoError" role="alert"></p>
+            <div class="formulario-botones">
+                <button type="button" class="boton boton-naranja" data-enviar="whatsapp"><i class="bi bi-whatsapp"></i> Enviar por WhatsApp</button>
+                <button type="button" class="boton boton-borde" data-ventana="app"><i class="bi bi-calendar-heart"></i> Reservar en línea</button>
+            </div>
+        </form>
+
+        <aside class="ofrecemos">
+            <h2>Antes de tu cita</h2>
+            <ul>
+                <li><i class="bi bi-clock"></i><span><strong>Llega 10 minutos antes</strong> para comenzar tranquilo y a tiempo.</span></li>
+                <li><i class="bi bi-clipboard2-pulse"></i><span><strong>Cuéntanos de tu salud</strong>: lesiones, cirugías, embarazo o medicamentos. Lo anotamos en tu ficha.</span></li>
+                <li><i class="bi bi-shield-check"></i><span><strong>Tu seguridad primero</strong>: con fiebre, una lesión reciente o un coágulo, mejor reprogramar.</span></li>
+                <li><i class="bi bi-cup-hot"></i><span><strong>Comida ligera</strong> antes y mucha agua después de tu sesión.</span></li>
+                <li><i class="bi bi-whatsapp"></i><span><strong>Te recordamos tu cita</strong> por WhatsApp el día anterior.</span></li>
+            </ul>
+        </aside>
+    </div>
+</div>

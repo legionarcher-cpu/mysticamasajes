@@ -1,0 +1,202 @@
+<!-- ==================================================
+     SERVICIOS (se abre en la ventana interna de index.html; data-ventana="productos")
+     Cada <article class="producto"> es un servicio:
+       - lo de arriba se ve en la tarjeta
+       - .producto-detalle se ve en grande en el visor (anterior / siguiente)
+       - data-segmentos: relajante, descontracturante y/o especiales (para los filtros)
+     Para agregar uno: copiar un <article> completo y cambiar sus textos e ícono
+     (íconos: https://icons.getbootstrap.com). Precios: se manejan en la app.
+     ================================================== -->
+<div class="pagina-interna">
+    <header>
+        <h1>Nuestros servicios</h1>
+        <p>Cada masaje tiene un propósito. Si no sabes cuál elegir, cuéntanos cómo te sientes y te recomendamos
+            el ideal para ti.</p>
+    </header>
+
+    <h2 class="subtitulo-interno">Cómo reservar</h2>
+    <div class="pasos pasos-internos">
+        <article class="paso">
+            <i class="bi bi-whatsapp"></i>
+            <h3>Escríbenos</h3>
+            <p>Por WhatsApp o en línea con tu usuario: elige servicio, día y hora libre.</p>
+        </article>
+        <article class="paso">
+            <i class="bi bi-clipboard2-pulse"></i>
+            <h3>Tu ficha</h3>
+            <p>Anotamos tus molestias, lesiones y condiciones de salud.</p>
+        </article>
+        <article class="paso">
+            <i class="bi bi-bell"></i>
+            <h3>Recordatorio</h3>
+            <p>Te confirmamos y te recordamos la cita por WhatsApp.</p>
+        </article>
+        <article class="paso">
+            <i class="bi bi-flower1"></i>
+            <h3>Tu sesión</h3>
+            <p>Llegas, te relajas y queda registrado lo que se trabajó.</p>
+        </article>
+    </div>
+
+    <h2 class="subtitulo-interno">Elige tu masaje</h2>
+    <div class="filtros" role="group" aria-label="Filtrar por tipo de terapia">
+        <button type="button" data-segmento="todos" class="activo">Todos</button>
+        <button type="button" data-segmento="relajante"><i class="bi bi-flower1"></i> Relajación</button>
+        <button type="button" data-segmento="descontracturante"><i class="bi bi-activity"></i> Descontracturante</button>
+        <button type="button" data-segmento="especiales"><i class="bi bi-droplet-half"></i> Deportivo y especiales</button>
+    </div>
+
+    <div class="productos">
+
+        <!-- ========== 1. RELAJANTE ========== -->
+        <article class="producto" data-segmentos="relajante">
+            <span class="producto-icono"><i class="bi bi-flower1"></i></span>
+            <h3>Masaje relajante</h3>
+            <p class="producto-frase">Presión suave a media en todo el cuerpo para soltar el estrés. 60 minutos.</p>
+            <div class="segmentos"><span class="segmento">Relajación</span><span class="segmento">60 min</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Movimientos largos, lentos y envolventes con aceites aromáticos, en un ambiente tranquilo, para que el
+                    cuerpo y la mente bajen el ritmo.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Disminuye el estrés y la ansiedad.</li>
+                    <li>Ayuda a dormir mejor.</li>
+                    <li>Mejora la circulación y la sensación de bienestar.</li>
+                    <li>Afloja la tensión general del cuerpo.</li>
+                </ul>
+                <h4>Ideal para</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-moon-stars"></i><div><strong>Mal descanso</strong><span>Si te cuesta desconectarte al final del día.</span></div></div>
+                    <div class="para-empresa"><i class="bi bi-gift"></i><div><strong>Primera vez</strong><span>La mejor forma de conocer los masajes.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 2. DESCONTRACTURANTE ========== -->
+        <article class="producto" data-segmentos="descontracturante">
+            <span class="producto-icono"><i class="bi bi-activity"></i></span>
+            <h3>Masaje descontracturante</h3>
+            <p class="producto-frase">Trabajo profundo en espalda, cuello y hombros para deshacer contracturas. 60 minutos.</p>
+            <div class="segmentos"><span class="segmento">Terapéutico</span><span class="segmento">60 min</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Presión firme y localizada sobre los nudos musculares y puntos de tensión. Se adapta a tu tolerancia:
+                    puede sentirse intenso, pero nunca debe doler de más.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Alivia el dolor de espalda, cuello y hombros.</li>
+                    <li>Libera contracturas y mejora la movilidad.</li>
+                    <li>Reduce dolores de cabeza por tensión.</li>
+                    <li>Corrige la sobrecarga por malas posturas.</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-exclamation-triangle"></i><div><strong>Precaución</strong><span>Si tomas anticoagulantes, tienes osteoporosis o una hernia discal, avísanos: adaptamos la presión.</span></div></div>
+                    <div class="para-empresa"><i class="bi bi-laptop"></i><div><strong>Ideal para</strong><span>Trabajo de oficina, manejo prolongado o cargar peso.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 3. DEPORTIVO ========== -->
+        <article class="producto" data-segmentos="especiales descontracturante">
+            <span class="producto-icono"><i class="bi bi-lightning-charge"></i></span>
+            <h3>Masaje deportivo</h3>
+            <p class="producto-frase">Preparación o recuperación muscular para quienes entrenan. 60 minutos.</p>
+            <div class="segmentos"><span class="segmento">Deportivo</span><span class="segmento">60 min</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Combina estiramientos, presión profunda y maniobras de activación según si vienes antes o después de
+                    tu competencia o entrenamiento.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Acelera la recuperación y reduce la fatiga muscular.</li>
+                    <li>Mejora la flexibilidad y el rango de movimiento.</li>
+                    <li>Ayuda a prevenir lesiones por sobrecarga.</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-bandaid"></i><div><strong>Lesión reciente</strong><span>Un esguince o desgarro de menos de 72 horas no se masajea en la zona.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 4. PIEDRAS CALIENTES ========== -->
+        <article class="producto" data-segmentos="especiales relajante">
+            <span class="producto-icono"><i class="bi bi-fire"></i></span>
+            <h3>Piedras calientes</h3>
+            <p class="producto-frase">Masaje con piedras volcánicas tibias que relajan en profundidad. 75 minutos.</p>
+            <div class="segmentos"><span class="segmento">Especial</span><span class="segmento">75 min</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>El calor de las piedras afloja los músculos y permite un trabajo profundo con menos presión. Una
+                    experiencia de relajación total.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Relajación muscular profunda.</li>
+                    <li>Alivio de rigidez y dolores crónicos.</li>
+                    <li>Sensación de calma y calor reconfortante.</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-exclamation-triangle"></i><div><strong>Precaución</strong><span>Con diabetes, problemas circulatorios, várices o embarazo, consúltanos antes.</span></div></div>
+                    <div class="para-empresa"><i class="bi bi-gift"></i><div><strong>Para regalar</strong><span>Ideal para cumpleaños y fechas especiales.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 5. DRENAJE LINFÁTICO ========== -->
+        <article class="producto" data-segmentos="especiales">
+            <span class="producto-icono"><i class="bi bi-droplet-half"></i></span>
+            <h3>Drenaje linfático</h3>
+            <p class="producto-frase">Técnica manual suave que favorece la circulación linfática. 60 minutos.</p>
+            <div class="segmentos"><span class="segmento">Especial</span><span class="segmento">60 min</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Movimientos rítmicos y muy suaves que siguen el recorrido de la linfa para ayudar a eliminar
+                    líquidos retenidos.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Reduce la hinchazón y la retención de líquidos.</li>
+                    <li>Sensación de piernas livianas.</li>
+                    <li>Apoya la recuperación (con indicación médica cuando corresponde).</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-clipboard2-pulse"></i><div><strong>Con indicación médica</strong><span>Después de una cirugía, con linfedema o tratamiento oncológico, trae la autorización de tu médico.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 6. RESERVA EN LÍNEA ========== -->
+        <article class="producto" data-segmentos="relajante descontracturante especiales">
+            <span class="producto-icono"><i class="bi bi-phone"></i></span>
+            <h3>Tu cuenta en línea</h3>
+            <p class="producto-frase">Pide tu usuario y reserva tus citas desde el celular.</p>
+            <div class="segmentos"><span class="segmento">Gratis</span><span class="segmento">Para clientes</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué puedes hacer</h4>
+                <ul>
+                    <li>Solicitar tu usuario en "¿Eres cliente? Solicita tu usuario".</li>
+                    <li>Reservar viendo solo las horas libres de cada día.</li>
+                    <li>Ver tus próximas citas y tu historial de visitas.</li>
+                    <li>Recibir el aviso cuando confirmamos o cambiamos tu cita.</li>
+                    <li>Personalizar tu perfil y tu foto.</li>
+                </ul>
+                <p><button type="button" class="boton boton-naranja" data-ventana="app"><i class="bi bi-calendar-heart"></i> Reservar en línea</button></p>
+            </div>
+        </article>
+    </div>
+
+    <p style="margin-top:2rem;text-align:center">
+        <button type="button" class="boton boton-naranja" data-ventana="contacto">
+            <i class="bi bi-whatsapp"></i> Reservar mi cita
+        </button>
+    </p>
+</div>
