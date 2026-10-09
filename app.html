@@ -38,7 +38,7 @@
     <!-- Sesión: SIN defer, para saber ANTES de dibujar la página si hay sesión.
          Si no la hay, se marca <html class="sin-sesion"> (oculta el usuario y
          los botones del pie sin que se vean un instante). -->
-    <script src="js/sesion.js"></script>
+    <script src="js/sesion.js?v=2"></script>
     <script>
         // Sin sesión -> html.sin-sesion | Con sesión -> html[data-rol="..."] (ver css/index.css)
         const sesionInicial = obtenerSesion();
@@ -71,9 +71,9 @@
     <!-- Viajes (Transporte): estados, precios, Inicio y reporte de viajes (js/viajes-comun.js) -->
     <script src="js/viajes-comun.js" defer></script>
     <!-- Citas (masajes): ficha del cliente, contraindicaciones, WhatsApp, horario, Inicio y reporte (js/citas-comun.js) -->
-    <script src="js/citas-comun.js?v=4" defer></script>
+    <script src="js/citas-comun.js?v=5" defer></script>
     <link rel="stylesheet" href="css/citas-comun.css?v=3">
-    <script src="js/permisos.js?v=2" defer></script>
+    <script src="js/permisos.js?v=3" defer></script>
     <script src="js/date.js" defer></script>
     <script src="js/menu-usuario.js" defer></script>
     <script src="js/menu-animado.js" defer></script>

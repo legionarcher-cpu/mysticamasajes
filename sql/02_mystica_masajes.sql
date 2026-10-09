@@ -327,7 +327,7 @@ begin
            format('%s (tel. %s) pidió su usuario "%s". Revísala en Clientes.', btrim(v_nombre || ' ' || v_ape), v_tel, v_usuario),
            '#mclientes', 'acceso_cliente_masajes', v_cliente
       from public.usuarios u
-     where u.empresa_id = v_empresa.id and u.rol in ('administrador', 'admin_g1') and u.aprobado;
+     where u.empresa_id = v_empresa.id and u.rol in ('administrador', 'admin_g1', 'piloto') and u.aprobado; -- piloto = terapeuta (nivel administrador en masajes)
 
     return jsonb_build_object('usuario', v_usuario, 'empresa', v_empresa.nombre);
 end;
