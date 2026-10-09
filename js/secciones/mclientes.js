@@ -17,7 +17,7 @@
 
 registrarSeccion('mclientes', (zona) => {
     const $ = (s) => zona.querySelector(s);
-    const puedeModificar = rolActual() !== 'piloto';
+    const puedeModificar = rolActual() !== 'piloto' || esAdministrador(); // terapeuta de masajes: nivel Administrador
     const puedeDarAcceso = esAdministrador() || esAdminG1();
     let clientes = [];
     let riesgos = new Map();

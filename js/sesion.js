@@ -181,7 +181,14 @@ function esDesarrollador() {
 // El Administrador es el de la empresa que usa el sistema. Todo lo que puede
 // hacer el Administrador también lo puede hacer el Desarrollador.
 function esAdministrador() {
-    return rolActual() === 'administrador' || esDesarrollador();
+    return rolActual() === 'administrador' || esDesarrollador() || esTerapeutaAdministrador();
+}
+
+// Terapeuta (rol piloto) de una empresa de CITAS (masajes): tiene nivel Administrador en
+// su empresa (todas las secciones, Usuarios, Configuración, Reportes, todas las citas) y
+// además se le pueden asignar citas. En las empresas de logística el piloto sigue igual.
+function esTerapeutaAdministrador() {
+    return rolActual() === 'piloto' && typeof empresaTieneCitas === 'function' && empresaTieneCitas();
 }
 
 function esAdminG1() {
@@ -253,7 +260,10 @@ function tienePermiso(seccion) {
     // Viajes solo si la empresa hace viajes; Pedidos, Rutas y Cotizador solo si hace pedidos
     if (!seccionAplica(seccion)) return false;
     // El conductor (piloto) de una empresa solo de viajes no tiene reporte: el de Reportes es de pedidos
-    if (seccion === 'reportes' && sesion.rol === 'piloto' && typeof empresaTienePedidos === 'function' && !empresaTienePedidos()) return false;
+    if (seccion === 'reportes' && sesion.rol === 'piloto' && !esTerapeutaAdministrador() && typeof empresaTienePedidos === 'function' && !empresaTienePedidos()) return false;
+
+    // Terapeuta de una empresa de citas: como el Administrador (todo lo que aplica a su empresa)
+    if (esTerapeutaAdministrador()) return seccion !== 'empresas-internas';
 
     // Empresas internas (pestaña Empresas de Tiendas): solo el Desarrollador
     if (seccion === 'empresas-internas') return sesion.rol === 'desarrollador';

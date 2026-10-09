@@ -32,7 +32,9 @@ function aplicarPermisos() {
 
     // Rol en <html data-rol="..."> para que el CSS oculte cosas según el rol
     // (ej. los botones del pie para los pilotos, ver css/index.css)
-    document.documentElement.dataset.rol = sesion ? sesion.rol : '';
+    // (el terapeuta de una empresa de citas se pinta como Administrador: ve el pie y todo lo demás)
+    const terapeutaAdmin = typeof esTerapeutaAdministrador === 'function' && esTerapeutaAdministrador();
+    document.documentElement.dataset.rol = sesion ? (terapeutaAdmin ? 'administrador' : sesion.rol) : '';
 
     // Nombre del usuario en el encabezado
     const nombreUsuario = document.querySelector('.user-nombre');

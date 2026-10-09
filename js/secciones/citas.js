@@ -26,7 +26,9 @@ registrarSeccion('citas', (zona) => {
 
     const $ = (s) => zona.querySelector(s);
     const sesion = obtenerSesion() || {};
-    const esTerapeuta = sesion.rol === 'piloto';
+    // Terapeuta "solo lo suyo": hoy ninguno (en empresas de citas el terapeuta tiene nivel
+    // Administrador, js/sesion.js: esTerapeutaAdministrador); queda por si se vuelve a limitar.
+    const esTerapeuta = sesion.rol === 'piloto' && !esAdministrador();
     const puedeAgendar = !esTerapeuta;
     let activo = true;
 

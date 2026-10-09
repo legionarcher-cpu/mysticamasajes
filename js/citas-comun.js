@@ -555,7 +555,7 @@ function citGuiaContraindicaciones() {
 
 // Administradores y G1 de la empresa (ids), para los avisos generales
 async function citIdsAdministradores() {
-    const { data } = await db.from('usuarios').select('id').in('rol', ['administrador', 'admin_g1']).neq('aprobado', false);
+    const { data } = await db.from('usuarios').select('id').in('rol', ['administrador', 'admin_g1', 'piloto']).neq('aprobado', false);
     return (data || []).map((u) => u.id);
 }
 
@@ -647,7 +647,7 @@ async function citCargarCitas(desde, hasta, { tiendaId = null } = {}) {
     let q = db.from('myst_citas').select(CIT_SELECT).gte('inicio', desde.toISOString()).lt('inicio', hasta.toISOString()).order('inicio');
     const sesion = obtenerSesion() || {};
     if (sesion.rol === 'cliente') q = q.eq('cliente_id', sesion.myst_cliente_id || 0); // solo las suyas
-    else if (sesion.rol === 'piloto') q = q.eq('terapeuta_id', sesion.id);
+    else if (sesion.rol === 'piloto' && !esAdministrador()) q = q.eq('terapeuta_id', sesion.id); // terapeuta sin nivel admin: solo las suyas
     else if (tiendaId) q = q.eq('tienda_id', tiendaId);
     else if (['admin_g3', 'empleado'].includes(sesion.rol) && sesion.tienda) q = q.eq('tienda_id', sesion.tienda.id);
     const { data, error } = await q;
@@ -708,7 +708,7 @@ function montarInicioCitas(zona) {
                 kpi(deHoy.filter((c) => ['solicitada', 'programada'].includes(c.estado)).length, 'Por confirmar hoy', 'resumen-naranja'),
                 kpi(atendidas.length, 'Atendidas', 'resumen-verde'),
                 kpi(deManana.length, 'Mañana', 'resumen-morada'),
-                ...(sesion.rol === 'piloto' ? [] : [kpi(citDinero(atendidas.reduce((s, c) => s + Number(c.precio || 0), 0)), 'Ingresos de hoy', 'resumen-turquesa')]));
+                ...(sesion.rol === 'piloto' && !esAdministrador() ? [] : [kpi(citDinero(atendidas.reduce((s, c) => s + Number(c.precio || 0), 0)), 'Ingresos de hoy', 'resumen-turquesa')]));
             hoyCaja.replaceChildren(...(deHoy.length ? deHoy.map((c) => fila(c)) : [citEl('p', { class: 'cit-vacio' }, 'No hay citas hoy.')]));
             mananaCaja.replaceChildren(...(deManana.length ? deManana.map((c) => fila(c,
                 c.recordatorio_en ? citEtiqueta('Enviado', 'etiqueta-verde')
@@ -739,7 +739,7 @@ function montarInicioCitas(zona) {
 // Avisa al personal que un cliente pidió o canceló una cita (Administrador, G1 y la sucursal)
 async function citAvisarPersonal(cita, titulo) {
     if (typeof avisar !== 'function') return;
-    const { data } = await db.from('usuarios').select('id').in('rol', ['administrador', 'admin_g1']).neq('aprobado', false);
+    const { data } = await db.from('usuarios').select('id').in('rol', ['administrador', 'admin_g1', 'piloto']).neq('aprobado', false);
     const inicio = new Date(cita.inicio);
     avisar({
         tiendaId: cita.tienda_id || null, a: cita.tienda_id ? ['tienda', 'g3'] : [],
