@@ -32,8 +32,10 @@ usuario y reserva sus citas.
 solicitud (nombre, teléfono, servicio, día, horario y molestias de salud).
 
 ## Agregar un servicio
-Copiar un `<article class="producto">` completo en `web/paginas/productos.html` y cambiar ícono, textos y
-`data-segmentos`.
+Copiar un `<article class="producto">` completo en `web/paginas/productos.html` y cambiar imagen, ícono, textos y
+`data-segmentos`. La imagen va en `<figure class="producto-foto"><img src="img/...">` (ruta desde `index.html`,
+espacios del nombre como `%20`); se ve en la tarjeta, en grande en el visor y como miniatura. Sin imagen:
+`<div class="producto-foto sin-imagen"><i class="bi bi-..."></i></div>`.
 
 ## Abrirla
 Con Live Server o desde la web publicada (con doble clic el navegador no carga las páginas de `web/paginas/`).

@@ -1,11 +1,13 @@
 <!-- ==================================================
      SERVICIOS (se abre en la ventana interna de index.html; data-ventana="productos")
      Cada <article class="producto"> es un servicio:
+       - .producto-foto: la imagen (banner) del servicio. Sin imagen: .producto-foto.sin-imagen con un ícono
        - lo de arriba se ve en la tarjeta
-       - .producto-detalle se ve en grande en el visor (anterior / siguiente)
+       - .producto-detalle se ve en grande en el visor (anterior / siguiente), junto a la imagen
        - data-segmentos: relajante, descontracturante y/o especiales (para los filtros)
-     Para agregar uno: copiar un <article> completo y cambiar sus textos e ícono
-     (íconos: https://icons.getbootstrap.com). Precios: se manejan en la app.
+     Para agregar uno: copiar un <article> completo y cambiar imagen, textos e ícono
+     (íconos: https://icons.getbootstrap.com). Imágenes en img/ (espacios del nombre como %20).
+     Precios: se manejan en la app.
      ================================================== -->
 <div class="pagina-interna">
     <header>
@@ -42,29 +44,32 @@
     <div class="filtros" role="group" aria-label="Filtrar por tipo de terapia">
         <button type="button" data-segmento="todos" class="activo">Todos</button>
         <button type="button" data-segmento="relajante"><i class="bi bi-flower1"></i> Relajación</button>
-        <button type="button" data-segmento="descontracturante"><i class="bi bi-activity"></i> Descontracturante</button>
+        <button type="button" data-segmento="descontracturante"><i class="bi bi-activity"></i> Descontracturante y terapéutico</button>
         <button type="button" data-segmento="especiales"><i class="bi bi-droplet-half"></i> Deportivo y especiales</button>
     </div>
 
     <div class="productos">
 
-        <!-- ========== 1. RELAJANTE ========== -->
+        <!-- ========== 1. RELAJANTE (img/WhatsApp Image banner 1.jpeg) ========== -->
         <article class="producto" data-segmentos="relajante">
+            <figure class="producto-foto">
+                <img src="img/WhatsApp%20Image%20banner%201.jpeg" alt="Masaje relajante: manos masajeando suavemente la espalda" loading="lazy">
+            </figure>
             <span class="producto-icono"><i class="bi bi-flower1"></i></span>
             <h3>Masaje relajante</h3>
-            <p class="producto-frase">Presión suave a media en todo el cuerpo para soltar el estrés. 60 minutos.</p>
+            <p class="producto-frase">Movimientos suaves y armoniosos que liberan las tensiones del día y aquietan la mente.</p>
             <div class="segmentos"><span class="segmento">Relajación</span><span class="segmento">60 min</span></div>
             <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
             <div class="producto-detalle">
                 <h4>Qué es</h4>
-                <p>Movimientos largos, lentos y envolventes con aceites aromáticos, en un ambiente tranquilo, para que el
-                    cuerpo y la mente bajen el ritmo.</p>
+                <p>El masaje relajante combina movimientos suaves y armoniosos que ayudan a liberar las tensiones del
+                    día, aquietar la mente y renovar la energía, creando un momento de paz y conexión con tu bienestar.</p>
                 <h4>Beneficios</h4>
                 <ul>
-                    <li>Disminuye el estrés y la ansiedad.</li>
-                    <li>Ayuda a dormir mejor.</li>
+                    <li>Libera las tensiones del día.</li>
+                    <li>Aquieta la mente y disminuye el estrés.</li>
+                    <li>Renueva la energía y ayuda a dormir mejor.</li>
                     <li>Mejora la circulación y la sensación de bienestar.</li>
-                    <li>Afloja la tensión general del cuerpo.</li>
                 </ul>
                 <h4>Ideal para</h4>
                 <div class="para-empresas">
@@ -74,22 +79,53 @@
             </div>
         </article>
 
-        <!-- ========== 2. DESCONTRACTURANTE ========== -->
+        <!-- ========== 2. RELAJANTE CON AROMATERAPIA (img/WhatsApp Image 2026-10-09 at 16.47.42.jpeg) ========== -->
+        <article class="producto" data-segmentos="relajante">
+            <figure class="producto-foto">
+                <img src="img/WhatsApp%20Image%202026-10-09%20at%2016.47.42.jpeg" alt="Masaje relajante con aromaterapia: aceites esenciales, velas y masaje de espalda" loading="lazy">
+            </figure>
+            <span class="producto-icono"><i class="bi bi-droplet"></i></span>
+            <h3>Masaje relajante con aromaterapia</h3>
+            <p class="producto-frase">Técnica suave con aceites esenciales que calma el sistema nervioso y la tensión acumulada.</p>
+            <div class="segmentos"><span class="segmento">Relajación</span><span class="segmento">Aromaterapia</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Técnica suave y relajante que ayuda a calmar el sistema nervioso, disminuir el estrés y la tensión
+                    acumulada, promoviendo una profunda sensación de tranquilidad y bienestar.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Calma el sistema nervioso.</li>
+                    <li>Disminuye el estrés y la tensión.</li>
+                    <li>Promueve bienestar y tranquilidad.</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-exclamation-triangle"></i><div><strong>Aromas y aceites</strong><span>Si tienes alergia a algún aroma o aceite, asma o estás embarazada, avísanos: elegimos los aceites adecuados.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 3. DESCONTRACTURANTE (img/WhatsApp Image banner.jpeg) ========== -->
         <article class="producto" data-segmentos="descontracturante">
+            <figure class="producto-foto">
+                <img src="img/WhatsApp%20Image%20banner.jpeg" alt="Masaje descontracturante: presión firme sobre el hombro y la espalda" loading="lazy">
+            </figure>
             <span class="producto-icono"><i class="bi bi-activity"></i></span>
             <h3>Masaje descontracturante</h3>
-            <p class="producto-frase">Trabajo profundo en espalda, cuello y hombros para deshacer contracturas. 60 minutos.</p>
+            <p class="producto-frase">Técnica terapéutica que alivia la tensión muscular, reduce las contracturas y mejora la movilidad.</p>
             <div class="segmentos"><span class="segmento">Terapéutico</span><span class="segmento">60 min</span></div>
             <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
             <div class="producto-detalle">
                 <h4>Qué es</h4>
-                <p>Presión firme y localizada sobre los nudos musculares y puntos de tensión. Se adapta a tu tolerancia:
-                    puede sentirse intenso, pero nunca debe doler de más.</p>
+                <p>El masaje descontracturante es una técnica terapéutica que ayuda a aliviar la tensión muscular,
+                    reducir las contracturas y mejorar la movilidad, proporcionando una sensación de alivio y bienestar.
+                    La presión se adapta a tu tolerancia: puede sentirse intenso, pero nunca debe doler de más.</p>
                 <h4>Beneficios</h4>
                 <ul>
-                    <li>Alivia el dolor de espalda, cuello y hombros.</li>
-                    <li>Libera contracturas y mejora la movilidad.</li>
-                    <li>Reduce dolores de cabeza por tensión.</li>
+                    <li>Alivia la tensión muscular de espalda, cuello y hombros.</li>
+                    <li>Reduce las contracturas y mejora la movilidad.</li>
+                    <li>Disminuye los dolores de cabeza por tensión.</li>
                     <li>Corrige la sobrecarga por malas posturas.</li>
                 </ul>
                 <h4>Antes de reservar</h4>
@@ -100,35 +136,70 @@
             </div>
         </article>
 
-        <!-- ========== 3. DEPORTIVO ========== -->
+        <!-- ========== 4. DESCARGA MUSCULAR (antes "Masaje deportivo"; img/WhatsApp Image banner 3.jpeg) ========== -->
         <article class="producto" data-segmentos="especiales descontracturante">
+            <figure class="producto-foto">
+                <img src="img/WhatsApp%20Image%20banner%203.jpeg" alt="Descarga muscular: deportista sujetando su pierna después de correr" loading="lazy" style="object-position: 30% center">
+            </figure>
             <span class="producto-icono"><i class="bi bi-lightning-charge"></i></span>
-            <h3>Masaje deportivo</h3>
-            <p class="producto-frase">Preparación o recuperación muscular para quienes entrenan. 60 minutos.</p>
-            <div class="segmentos"><span class="segmento">Deportivo</span><span class="segmento">60 min</span></div>
+            <h3>Descarga muscular</h3>
+            <p class="producto-frase">Presión e intensidad controlada para recuperarte después del esfuerzo físico.</p>
+            <div class="segmentos"><span class="segmento">Deportivo</span><span class="segmento">Terapéutico</span></div>
             <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
             <div class="producto-detalle">
                 <h4>Qué es</h4>
-                <p>Combina estiramientos, presión profunda y maniobras de activación según si vienes antes o después de
-                    tu competencia o entrenamiento.</p>
+                <p>Masaje terapéutico de presión e intensidad controlada que libera la tensión acumulada, disminuye la
+                    sobrecarga muscular y favorece la recuperación después del esfuerzo físico.</p>
                 <h4>Beneficios</h4>
                 <ul>
-                    <li>Acelera la recuperación y reduce la fatiga muscular.</li>
-                    <li>Mejora la flexibilidad y el rango de movimiento.</li>
+                    <li>Alivia la tensión muscular.</li>
+                    <li>Favorece la recuperación.</li>
+                    <li>Mejora la movilidad.</li>
                     <li>Ayuda a prevenir lesiones por sobrecarga.</li>
                 </ul>
                 <h4>Antes de reservar</h4>
                 <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-person-arms-up"></i><div><strong>Ideal para</strong><span>Quienes entrenan, corren o hacen trabajo físico exigente.</span></div></div>
                     <div class="para-empresa"><i class="bi bi-bandaid"></i><div><strong>Lesión reciente</strong><span>Un esguince o desgarro de menos de 72 horas no se masajea en la zona.</span></div></div>
                 </div>
             </div>
         </article>
 
-        <!-- ========== 4. PIEDRAS CALIENTES ========== -->
+        <!-- ========== 5. MASAJES TERAPÉUTICOS Y QUIROPRAXIA (img/WhatsApp Image banner 4.jpeg) ========== -->
+        <article class="producto" data-segmentos="descontracturante">
+            <figure class="producto-foto">
+                <img src="img/WhatsApp%20Image%20banner%204.jpeg" alt="Masajes terapéuticos y quiropraxia: presión con los pulgares en la espalda" loading="lazy">
+            </figure>
+            <span class="producto-icono"><i class="bi bi-heart-pulse"></i></span>
+            <h3>Masajes terapéuticos y quiropraxia</h3>
+            <p class="producto-frase">Masaje y quiropraxia para reducir el dolor, ganar flexibilidad y bajar el estrés.</p>
+            <div class="segmentos"><span class="segmento">Terapéutico</span><span class="segmento">Quiropraxia</span></div>
+            <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
+            <div class="producto-detalle">
+                <h4>Qué es</h4>
+                <p>Sesión terapéutica que combina masaje y quiropraxia para trabajar las zonas con dolor o rigidez y
+                    devolverle al cuerpo su movimiento natural.</p>
+                <h4>Beneficios</h4>
+                <ul>
+                    <li>Aumento de la flexibilidad.</li>
+                    <li>Disminuye el estrés.</li>
+                    <li>Reducción del dolor.</li>
+                </ul>
+                <h4>Antes de reservar</h4>
+                <div class="para-empresas">
+                    <div class="para-empresa"><i class="bi bi-exclamation-triangle"></i><div><strong>Precaución</strong><span>Con osteoporosis, hernia discal, cirugía reciente de columna o embarazo, avísanos antes de la sesión.</span></div></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 6. PIEDRAS CALIENTES (img/banner piedras calientes.jpg) ========== -->
         <article class="producto" data-segmentos="especiales relajante">
+            <figure class="producto-foto">
+                <img src="img/banner%20piedras%20calientes.jpg" alt="Masaje con piedras calientes: relajación profunda, alivio muscular" loading="lazy" style="object-position: right center">
+            </figure>
             <span class="producto-icono"><i class="bi bi-fire"></i></span>
             <h3>Piedras calientes</h3>
-            <p class="producto-frase">Masaje con piedras volcánicas tibias que relajan en profundidad. 75 minutos.</p>
+            <p class="producto-frase">Piedras volcánicas tibias para una relajación profunda y alivio muscular. 75 minutos.</p>
             <div class="segmentos"><span class="segmento">Especial</span><span class="segmento">75 min</span></div>
             <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
             <div class="producto-detalle">
@@ -137,8 +208,8 @@
                     experiencia de relajación total.</p>
                 <h4>Beneficios</h4>
                 <ul>
-                    <li>Relajación muscular profunda.</li>
-                    <li>Alivio de rigidez y dolores crónicos.</li>
+                    <li>Relajación profunda.</li>
+                    <li>Alivio muscular, de rigidez y de dolores crónicos.</li>
                     <li>Sensación de calma y calor reconfortante.</li>
                 </ul>
                 <h4>Antes de reservar</h4>
@@ -149,11 +220,14 @@
             </div>
         </article>
 
-        <!-- ========== 5. DRENAJE LINFÁTICO ========== -->
+        <!-- ========== 7. DRENAJE LINFÁTICO (img/banner drenaje linfatico.jpg) ========== -->
         <article class="producto" data-segmentos="especiales">
+            <figure class="producto-foto">
+                <img src="img/banner%20drenaje%20linfatico.jpg" alt="Drenaje linfático: desintoxicación profunda, reducción de inflamación" loading="lazy" style="object-position: right center">
+            </figure>
             <span class="producto-icono"><i class="bi bi-droplet-half"></i></span>
             <h3>Drenaje linfático</h3>
-            <p class="producto-frase">Técnica manual suave que favorece la circulación linfática. 60 minutos.</p>
+            <p class="producto-frase">Técnica manual suave para una desintoxicación profunda y menos inflamación. 60 minutos.</p>
             <div class="segmentos"><span class="segmento">Especial</span><span class="segmento">60 min</span></div>
             <span class="producto-ver">Ver detalle <i class="bi bi-arrow-right"></i></span>
             <div class="producto-detalle">
@@ -162,7 +236,8 @@
                     líquidos retenidos.</p>
                 <h4>Beneficios</h4>
                 <ul>
-                    <li>Reduce la hinchazón y la retención de líquidos.</li>
+                    <li>Desintoxicación profunda.</li>
+                    <li>Reduce la inflamación, la hinchazón y la retención de líquidos.</li>
                     <li>Sensación de piernas livianas.</li>
                     <li>Apoya la recuperación (con indicación médica cuando corresponde).</li>
                 </ul>
@@ -173,8 +248,11 @@
             </div>
         </article>
 
-        <!-- ========== 6. RESERVA EN LÍNEA ========== -->
+        <!-- ========== 8. RESERVA EN LÍNEA ========== -->
         <article class="producto" data-segmentos="relajante descontracturante especiales">
+            <figure class="producto-foto">
+                <img src="img/reserva%20tu%20cita.jpg" alt="Reserva tu masaje en línea desde el celular" loading="lazy" style="object-position: right center">
+            </figure>
             <span class="producto-icono"><i class="bi bi-phone"></i></span>
             <h3>Tu cuenta en línea</h3>
             <p class="producto-frase">Pide tu usuario y reserva tus citas desde el celular.</p>

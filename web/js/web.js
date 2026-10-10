@@ -330,6 +330,7 @@ let visorIndice = 0;
 let focoVisor = null;
 
 const iconoDe = (p) => (p.querySelector('.producto-icono i') || {}).className || 'bi bi-box';
+const imagenDe = (p) => p.querySelector('.producto-foto img');
 
 function abrirVisor(lista, indice) {
     if (!lista.length) return;
@@ -340,7 +341,9 @@ function abrirVisor(lista, indice) {
         b.type = 'button';
         b.title = p.querySelector('h3').textContent;
         b.setAttribute('aria-label', b.title);
-        b.innerHTML = `<i class="${iconoDe(p)}"></i>`;
+        const img = imagenDe(p);
+        if (img) b.appendChild(Object.assign(document.createElement('img'), { src: img.src, alt: '' }));
+        else b.innerHTML = `<i class="${iconoDe(p)}"></i>`;
         b.addEventListener('click', () => mostrarProducto(i, i > visorIndice ? 1 : -1));
         return b;
     }));
@@ -359,7 +362,21 @@ function mostrarProducto(i, direccion) {
     document.getElementById('visorFrase').textContent = (p.querySelector('.producto-frase') || {}).textContent || '';
     document.getElementById('visorContador').textContent = `${visorIndice + 1} / ${visorLista.length}`;
     const detalle = p.querySelector('.producto-detalle');
-    visorContenido.innerHTML = detalle ? detalle.innerHTML : '';
+    const img = imagenDe(p);
+    // Con imagen: la imagen completa a un lado (abre en grande en otra pestaña) y el detalle al otro
+    visor.querySelector('.visor-marco').classList.toggle('con-imagen', !!img);
+    if (img) {
+        const foto = Object.assign(document.createElement('a'), { className: 'visor-foto', href: img.src, target: '_blank', rel: 'noopener' });
+        foto.append(Object.assign(document.createElement('img'), { src: img.src, alt: img.alt }));
+        foto.insertAdjacentHTML('beforeend', '<span><i class="bi bi-arrows-fullscreen"></i> Ver en grande</span>');
+        const texto = document.createElement('div');
+        texto.innerHTML = detalle ? detalle.innerHTML : '';
+        const galeria = Object.assign(document.createElement('div'), { className: 'visor-galeria' });
+        galeria.append(foto, texto);
+        visorContenido.replaceChildren(galeria);
+    } else {
+        visorContenido.innerHTML = detalle ? detalle.innerHTML : '';
+    }
     visorContenido.scrollTop = 0;
     visorContenido.classList.remove('entra-derecha', 'entra-izquierda');
     void visorContenido.offsetWidth;
